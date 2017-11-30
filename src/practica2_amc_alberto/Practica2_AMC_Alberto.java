@@ -16,7 +16,7 @@ public class Practica2_AMC_Alberto {
      */
     public static void main(String[] args) {
         // TODO code application logic here
-        
+        System.out.println("empezando main");
         int[] aux= {6,31,3,23,4,8,16};
         
         for(int i=0; i<7; i++){
