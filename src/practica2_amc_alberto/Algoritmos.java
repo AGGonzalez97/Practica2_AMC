@@ -13,11 +13,13 @@ import static practica2_amc_alberto.Punto.distancia;
  */
 public class Algoritmos {
     Punto [] p;
+    Punto [] s;
     Algoritmos(Punto [] p){
         this.p = p;
+        s = new Punto[3];
     }
-    Punto[] SolucionLenta(){
-        Punto [] s = new Punto[3];
+    void SolucionLenta(){
+        
         double cercania=-1;
         int l = p.length;
             for (int i = 0; i < l; i++) {
@@ -32,7 +34,58 @@ public class Algoritmos {
                     }
                 }
             }
-            return s;
+            
     }
-    
+    double SolucionRapida(){
+        return DyV(this.p);
+    }
+    double DyV(Punto [] p,Punto [] s){
+        switch(s.length){
+            case(3):
+            {
+                return distancia(s[0],s[1],s[2]);
+            }
+            case(2):{
+                double minimo = -1;
+                int l = p.length;
+                for (int i = 0; i < l; i++) {
+                    if(!(p[i].equals(s[1]) || p[i].equals(s[0]))){
+                        if(distancia(s[0],s[1],p[0]) < minimo || minimo == -1){
+                            minimo = distancia(s[0],s[1],p[0]);
+                        }
+                    }
+                }
+                return minimo;
+                
+            }
+            case(1):{
+                //Hacer fuerza bruta supondria un coste cuadrático
+            }
+            default:{
+                double min1,min2;
+                int l = p.length;
+                Punto [] c1= new Punto[l];
+                Punto [] c2= new Punto[l];
+                double mitad = (p[l-1].x - p[0].x )/2;
+                int j=0;int k = 0;
+                for (int i = 0; i < l; i++) {
+                    if(p[i].x< mitad){
+                        c1[j]=p[i];
+                        j++;
+                    }
+                    if(p[i].x>= mitad){
+                        c2[k]=p[i];
+                        k++;
+                    }
+                    
+                }
+                min1 =DyV(p, c1);
+                min2 =DyV(p, c2);
+                //coger con todos los puntos un area intermedia y hacer fuerza bruta entre esos puntos y quedarse con el menor distancia
+                
+                
+                
+            }
+        }
+    }
 }
