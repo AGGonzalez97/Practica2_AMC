@@ -82,7 +82,17 @@ public class Algoritmos {
                 min1 =DyV(p, c1);
                 min2 =DyV(p, c2);
                 //coger con todos los puntos un area intermedia y hacer fuerza bruta entre esos puntos y quedarse con el menor distancia
-                
+                for (int i = 0; i < l; i++) {
+                    if(p[i].x< mitad && p[i].x > (mitad - dmin)){
+                        c1[j]=p[i];
+                        j++;
+                    }
+                    if(p[i].x< mitad && p[i].x > (mitad - dmin)){
+                        c2[k]=p[i];
+                        k++;
+                    }
+                    
+                }
                 
                 
             }
