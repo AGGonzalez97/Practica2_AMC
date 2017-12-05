@@ -36,7 +36,7 @@ public class Algoritmos {
             }
             
     }
-    double SolucionRapida(){
+   /* double SolucionRapida(){
         return DyV(this.p);
     }
     double DyV(Punto [] p,Punto [] s){
@@ -87,5 +87,5 @@ public class Algoritmos {
                 
             }
         }
-    }
+    }*/
 }

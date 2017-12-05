@@ -20,9 +20,15 @@ public class Punto {
     }
     public static double distancia(Punto p1, Punto p2, Punto p3){
         return (distancia(p1,p2)+distancia(p2, p3)+distancia(p3,p1));
+        
+        
+        
     }
     public static double distancia(Punto p1, Punto p2){
         return sqrt((p1.x-p2.x)*(p1.x-p2.x)+(p1.y-p2.y)*(p1.y-p2.y));
     }
+    
+    
+    
 }
 

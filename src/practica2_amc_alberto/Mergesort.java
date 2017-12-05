@@ -10,14 +10,14 @@ package practica2_amc_alberto;
  * @author usuario
  */
 public class Mergesort {
-    private int[] numbers;
-    private int[] helper;
+    private Punto[] numbers;
+    private Punto[] helper;
     private int longitud;
 
-    public void sort(int[] values) {
+    public void sort(Punto[] values) {
         this.numbers = values;
         longitud= values.length;
-        this.helper = new int[longitud];
+        this.helper = new Punto[longitud];
         mergesort(0, longitud - 1);
     }
 
@@ -46,7 +46,7 @@ public class Mergesort {
         int k = bajo;
         
         while (i <= medio && j <= alto) {
-            if (helper[i] <= helper[j]) {
+            if (helper[i].x <= helper[j].x) {
                 numbers[k] = helper[i];
                 i++;
             } else {
@@ -64,4 +64,4 @@ public class Mergesort {
         
 
     }
-}//PUTA MIERDA
+}
