@@ -6,6 +6,7 @@
 package practica2_amc_alberto;
 
 import static practica2_amc_alberto.Punto.distancia;
+import static practica2_amc_alberto.Solucion.mejor;
 
 /**
  *
@@ -82,16 +83,24 @@ public class Algoritmos {
                 min1 =DyV(p, c1);
                 min2 =DyV(p, c2);
                 //coger con todos los puntos un area intermedia y hacer fuerza bruta entre esos puntos y quedarse con el menor distancia
+                Punto [] medio = new Punto[p.length];
+                k = 0;
                 for (int i = 0; i < l; i++) {
-                    if(p[i].x< mitad && p[i].x > (mitad - dmin)){
+                    if(p[i].x< mitad && p[i].x > (mitad - mejor(min1,min2).dist)){
                         c1[j]=p[i];
                         j++;
                     }
-                    if(p[i].x< mitad && p[i].x > (mitad - dmin)){
+                    if(p[i].x> mitad && p[i].x > (mitad + mejor(min1,min2).dist)){
                         c2[k]=p[i];
                         k++;
                     }
                     
+                }
+                
+                for (int i = 0; i < c1.length; i++) {
+                    for (int m = 0; m < c2.length; m++) {
+                        
+                    }
                 }
                 
                 
