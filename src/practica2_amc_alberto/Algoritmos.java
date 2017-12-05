@@ -11,6 +11,7 @@ import static practica2_amc_alberto.Punto.distancia;
  *
  * @author Usuario
  */
+
 public class Algoritmos {
     Punto [] p;
     Punto [] s;
@@ -36,16 +37,15 @@ public class Algoritmos {
             }
             
     }
-    double SolucionRapida(){
+    void SolucionRapida(){
         return DyV(this.p);
     }
-    double DyV(Punto [] p,Punto [] s){
-        switch(s.length){
-            case(3):
-            {
-                return distancia(s[0],s[1],s[2]);
-            }
-            case(2):{
+    Solucion DyV(Punto [] p,Punto [] s){
+            
+            
+                
+            
+            /*case(2):{
                 double minimo = -1;
                 int l = p.length;
                 for (int i = 0; i < l; i++) {
@@ -60,9 +60,9 @@ public class Algoritmos {
             }
             case(1):{
                 //Hacer fuerza bruta supondria un coste cuadrático
-            }
-            default:{
-                double min1,min2;
+            }*/
+            if(s.length>3){
+                Solucion min1,min2;
                 int l = p.length;
                 Punto [] c1= new Punto[l];
                 Punto [] c2= new Punto[l];
@@ -95,7 +95,16 @@ public class Algoritmos {
                 }
                 
                 
-            }
+            }else{
+                if(s.length==3){
+                    Solucion sol = new Solucion();
+                    sol.dist= distancia(s[0],s[1],s[2]);
+                    sol.p[0]=s[0];
+                    sol.p[1]= s[1];
+                    sol.p[2]= s[2];
+                    return sol;
+                }
+                
         }
     }
 }
