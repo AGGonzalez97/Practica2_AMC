@@ -5,6 +5,8 @@
  */
 package practica2_amc_alberto;
 
+import java.util.ArrayList;
+
 /**
  *
  * @author usuario
@@ -16,13 +18,13 @@ public class Practica2_AMC_Alberto {
      */
 
     public static void main(String[] args) {
-        // TODO code application logic here
+        
         System.out.println("empezando main");
         
         
         Punto a= new Punto((double)1,(double)2);
         Punto b= new Punto((double)7,(double)2);
-        Punto c= new Punto((double)8,(double)4);
+        Punto c= new Punto((double)8,(double)16);
         Punto d= new Punto((double)9,(double)2);
         Punto e= new Punto((double)15,(double)2);
         
@@ -39,7 +41,7 @@ public class Practica2_AMC_Alberto {
         mer.sort(tabla);
         */
         
-        Algoritmos al=new Algoritmos(tabla);
+        Algoritmos al=new Algoritmos(tabla,5);
         al.SolucionRapida();
         
         System.out.println(al.s.dist);
@@ -47,6 +49,10 @@ public class Practica2_AMC_Alberto {
         /*for(int i=0; i<5; i++){
             System.out.println(tabla[i].x);
         }*/
+        
+        
+     
     }
-}
+    }
+
 //Nueva modificacion

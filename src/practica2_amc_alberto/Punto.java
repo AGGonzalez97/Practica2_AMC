@@ -25,17 +25,21 @@ public class Punto {
 
         double[] tabla={a,b,c};
         double max=a;   
-        for(int i=0;i<2;i++){
+        for(int i=0;i<3;i++){
             if(tabla[i]>max){
                 max=tabla[i];
             }
         }
-        
+        boolean d = false;
         double suma=0;
         for(int i=0;i<3;i++){
-            if(tabla[i]!=max){
-                suma=(suma+tabla[i]);
+            if(tabla[i]== max && d == false){
+                d=true;
+            }else{
+               suma=(suma+tabla[i]);
+                
             }
+            
         }
         
         
@@ -43,7 +47,7 @@ public class Punto {
   
     }
     public static double distancia(Punto p1, Punto p2){
-        return sqrt((p1.x-p2.x)*(p1.x-p2.x)+(p1.y-p2.y)*(p1.y-p2.y));
+        return sqrt(((p2.x-p1.x)*(p2.x-p1.x))+((p2.y-p1.y)*(p2.y-p1.y)));
     }
     
 }
