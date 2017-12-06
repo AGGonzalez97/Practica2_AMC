@@ -48,7 +48,7 @@ public class Algoritmos {
         Punto [] x = p;
         s =DyV(x);
     }
-    Solucion DyV(Punto [] s){
+    Solucion DyV(Punto [] t){
             
             
                 
@@ -69,20 +69,20 @@ public class Algoritmos {
             case(1):{
                 //Hacer fuerza bruta supondria un coste cuadrático
             }*/
-            if(s.length>3){
+            if(t.length > 3){
                 Solucion min1,min2;
-                int l = s.length;
+                int l = t.length;
                 Punto [] c1= new Punto[l];
                 Punto [] c2= new Punto[l];
-                double mitad = (s[l-1].x - s[0].x )/2;
+                double mitad = (t[l-1].x - t[0].x )/2;
                 int j=0;int k = 0;
                 for (int i = 0; i < l; i++) {
-                    if(s[i].x< mitad){
-                        c1[j]=s[i];
+                    if(t[i].x< mitad){
+                        c1[j]=t[i];
                         j++;
                     }
-                    if(s[i].x>= mitad){
-                        c2[k]=s[i];
+                    if(t[i].x>= mitad){
+                        c2[k]=t[i];
                         k++;
                     }
                     
@@ -93,8 +93,8 @@ public class Algoritmos {
                 Punto [] medio = new Punto[l];
                 k = 0;
                 for (int i = 0; i < l; i++) {
-                    if( s[i].x < (mitad + mejor(min1,min2).dist) && s[i].x >= (mitad - mejor(min1,min2).dist)){
-                        medio[k]=s[i];
+                    if( t[i].x < (mitad + mejor(min1,min2).dist) && t[i].x >= (mitad - mejor(min1,min2).dist)){
+                        medio[k]=t[i];
                         k++;
                     }
                 }
@@ -118,12 +118,12 @@ public class Algoritmos {
                 return mejor(min1,min2,min3);
                 
             }else{
-                if(s.length==3){
+                if(t.length==3){
                     Solucion sol = new Solucion();
-                    sol.dist= distancia(s[0],s[1],s[2]);
-                    sol.p[0]=s[0];
-                    sol.p[1]= s[1];
-                    sol.p[2]= s[2];
+                    sol.dist= distancia(t[0],t[1],t[2]);
+                    sol.p[0]=t[0];
+                    sol.p[1]= t[1];
+                    sol.p[2]= t[2];
                     return sol;
                 }else return new Solucion();
                 

@@ -20,11 +20,11 @@ public class Practica2_AMC_Alberto {
         System.out.println("empezando main");
         
         
-        Punto a= new Punto(1,2);
-        Punto b= new Punto(7,2);
-        Punto c= new Punto(8,4);
-        Punto d= new Punto(9,2);
-        Punto e= new Punto(15,2);
+        Punto a= new Punto((double)1,(double)2);
+        Punto b= new Punto((double)7,(double)2);
+        Punto c= new Punto((double)8,(double)4);
+        Punto d= new Punto((double)9,(double)2);
+        Punto e= new Punto((double)15,(double)2);
         
         Punto[] tabla= {a,b,c,d,e};
         
@@ -40,7 +40,7 @@ public class Practica2_AMC_Alberto {
         */
         
         Algoritmos al=new Algoritmos(tabla);
-        al.SolucionLenta();
+        al.SolucionRapida();
         
         System.out.println(al.s.dist);
         

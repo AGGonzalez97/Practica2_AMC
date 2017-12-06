@@ -12,8 +12,8 @@ import static java.lang.Math.sqrt;
  * @author Usuario
  */
 public class Punto {
-    public float x,y;
-    Punto(int x, int y ){
+    public double x,y;
+    Punto(double x, double y ){
         this.x = x;
         this.y = y;
         
