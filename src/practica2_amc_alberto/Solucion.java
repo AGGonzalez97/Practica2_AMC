@@ -20,4 +20,12 @@ public class Solucion {
        if(s1.dist < s2.dist) return s1;
        else return s2;
    }
+   public static Solucion mejor(Solucion s1,Solucion s2, Solucion s3){
+       if(s1.dist < s2.dist && s1.dist < s3.dist) return s1;
+       else {
+          if(s2.dist < s3.dist) return s2;
+          else return s3;  
+       }
+          
+   }
 }

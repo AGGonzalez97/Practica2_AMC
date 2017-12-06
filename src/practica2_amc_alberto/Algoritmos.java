@@ -83,26 +83,32 @@ public class Algoritmos {
                 min1 =DyV(p, c1);
                 min2 =DyV(p, c2);
                 //coger con todos los puntos un area intermedia y hacer fuerza bruta entre esos puntos y quedarse con el menor distancia
-                Punto [] medio = new Punto[p.length];
+                Punto [] medio = new Punto[l];
                 k = 0;
                 for (int i = 0; i < l; i++) {
-                    if(p[i].x< mitad && p[i].x > (mitad - mejor(min1,min2).dist)){
-                        c1[j]=p[i];
-                        j++;
-                    }
-                    if(p[i].x> mitad && p[i].x > (mitad + mejor(min1,min2).dist)){
-                        c2[k]=p[i];
+                    if( p[i].x < (mitad + mejor(min1,min2).dist) && p[i].x >= (mitad - mejor(min1,min2).dist)){
+                        medio[k]=p[i];
                         k++;
                     }
-                    
                 }
-                
-                for (int i = 0; i < c1.length; i++) {
-                    for (int m = 0; m < c2.length; m++) {
-                        
+                int m = medio.length;
+                Solucion min3 =new Solucion();
+                min3.dist = min1.dist + min2.dist;
+                for (int i = 0; i < m; i++) {
+                    for (int n = 0; n < m; n++) {
+                        for (int o = 0; o < m; o++) {
+                            if(!(medio[i].equals(medio[n]) || medio[o].equals(medio[n]) || medio[i].equals(medio[o]))){
+                                if(distancia(medio[i],medio[n],medio[o]) < min3.dist){
+                                    min3.p[0]=medio[i];
+                                    min3.p[1]= medio[n];   
+                                    min3.p[2]= medio[o];
+                                    min3.dist = distancia(medio[i],medio[n],medio[o]);
+                                }
+                            }
+                        }
                     }
                 }
-                
+                return mejor(min1,min2,min3);
                 
             }else{
                 if(s.length==3){
