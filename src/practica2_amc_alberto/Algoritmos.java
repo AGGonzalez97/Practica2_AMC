@@ -22,16 +22,22 @@ public class Algoritmos {
     }
     void SolucionLenta(){
         
-        double cercania=-1;
+        double cercania=distancia(p[0],p[1],p[2]);
         int l = p.length;
             for (int i = 0; i < l; i++) {
                 for (int j = 0; j < l; j++) {
                     for (int k = 0; k < l; k++) {
-                        if(distancia(p[i],p[j],p[k]) < cercania || cercania == -1){
-                            cercania = distancia(p[i],p[j],p[k]);
+                        if(i==j || i==k || k==j){}
+                        else {
+                            double aux=distancia(p[i],p[j],p[k]);
+                            
+                        if( aux < cercania){
+                            cercania=aux;
+                            s.dist= aux;
                             s.p[0]=p[i];
-                            s.p[1]=p[j];
+                            s.p[1]=p[j];        
                             s.p[2]=p[k];
+                        }
                         }
                     }
                 }

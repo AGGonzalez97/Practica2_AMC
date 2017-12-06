@@ -14,23 +14,39 @@ public class Practica2_AMC_Alberto {
     /**
      * @param args the command line arguments
      */
+
     public static void main(String[] args) {
         // TODO code application logic here
         System.out.println("empezando main");
-        int[] aux= {6,31,3,23,4,8,16};
         
-        for(int i=0; i<7; i++){
-            System.out.println(aux[i]);
+        
+        Punto a= new Punto(1,2);
+        Punto b= new Punto(7,2);
+        Punto c= new Punto(8,4);
+        Punto d= new Punto(9,2);
+        Punto e= new Punto(15,2);
+        
+        Punto[] tabla= {a,b,c,d,e};
+        
+        
+        
+        for(int i=0; i<5; i++){
+            System.out.println(tabla[i].x);
         }
         
-        
+        /*
         Mergesort mer= new Mergesort();
-        mer.sort(aux);
+        mer.sort(tabla);
+        */
         
-        for(int i=0; i<7; i++){
-            System.out.println(aux[i]);
-        }
+        Algoritmos al=new Algoritmos(tabla);
+        al.SolucionLenta();
+        
+        System.out.println(al.s.dist);
+        
+        /*for(int i=0; i<5; i++){
+            System.out.println(tabla[i].x);
+        }*/
     }
-    
 }
 //Nueva modificacion
