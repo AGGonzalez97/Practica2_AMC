@@ -15,10 +15,10 @@ import static practica2_amc_alberto.Solucion.mejor;
 
 public class Algoritmos {
     Punto [] p;
-    Punto [] s;
+    Solucion s;
     Algoritmos(Punto [] p){
         this.p = p;
-        s = new Punto[3];
+        s = new Solucion();
     }
     void SolucionLenta(){
         
@@ -29,9 +29,9 @@ public class Algoritmos {
                     for (int k = 0; k < l; k++) {
                         if(distancia(p[i],p[j],p[k]) < cercania || cercania == -1){
                             cercania = distancia(p[i],p[j],p[k]);
-                            s[0]=p[i];
-                            s[1]=p[j];
-                            s[2]=p[k];
+                            s.p[0]=p[i];
+                            s.p[1]=p[j];
+                            s.p[2]=p[k];
                         }
                     }
                 }
@@ -39,9 +39,10 @@ public class Algoritmos {
             
     }
     void SolucionRapida(){
-        return DyV(this.p);
+        Punto [] x = p;
+        s =DyV(x);
     }
-    Solucion DyV(Punto [] p,Punto [] s){
+    Solucion DyV(Punto [] s){
             
             
                 
@@ -64,36 +65,36 @@ public class Algoritmos {
             }*/
             if(s.length>3){
                 Solucion min1,min2;
-                int l = p.length;
+                int l = s.length;
                 Punto [] c1= new Punto[l];
                 Punto [] c2= new Punto[l];
-                double mitad = (p[l-1].x - p[0].x )/2;
+                double mitad = (s[l-1].x - s[0].x )/2;
                 int j=0;int k = 0;
                 for (int i = 0; i < l; i++) {
-                    if(p[i].x< mitad){
-                        c1[j]=p[i];
+                    if(s[i].x< mitad){
+                        c1[j]=s[i];
                         j++;
                     }
-                    if(p[i].x>= mitad){
-                        c2[k]=p[i];
+                    if(s[i].x>= mitad){
+                        c2[k]=s[i];
                         k++;
                     }
                     
                 }
-                min1 =DyV(p, c1);
-                min2 =DyV(p, c2);
+                min1 =DyV( c1);
+                min2 =DyV( c2);
                 //coger con todos los puntos un area intermedia y hacer fuerza bruta entre esos puntos y quedarse con el menor distancia
                 Punto [] medio = new Punto[l];
                 k = 0;
                 for (int i = 0; i < l; i++) {
-                    if( p[i].x < (mitad + mejor(min1,min2).dist) && p[i].x >= (mitad - mejor(min1,min2).dist)){
-                        medio[k]=p[i];
+                    if( s[i].x < (mitad + mejor(min1,min2).dist) && s[i].x >= (mitad - mejor(min1,min2).dist)){
+                        medio[k]=s[i];
                         k++;
                     }
                 }
                 int m = medio.length;
                 Solucion min3 =new Solucion();
-                min3.dist = min1.dist + min2.dist;
+                min3.dist = distancia(medio[0],medio[1],medio[2]);
                 for (int i = 0; i < m; i++) {
                     for (int n = 0; n < m; n++) {
                         for (int o = 0; o < m; o++) {
@@ -118,7 +119,7 @@ public class Algoritmos {
                     sol.p[1]= s[1];
                     sol.p[2]= s[2];
                     return sol;
-                }
+                }else return new Solucion();
                 
         }
     }

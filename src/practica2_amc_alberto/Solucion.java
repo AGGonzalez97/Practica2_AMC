@@ -14,18 +14,25 @@ public class Solucion {
     double dist;
     Solucion(){
         p = new Punto[3];
-        
+        dist = -1;
     }
    public static Solucion mejor(Solucion s1,Solucion s2){
-       if(s1.dist < s2.dist) return s1;
-       else return s2;
+       if(s1.dist==-1)return s2;
+       else{
+           if(s2.dist == -1)return s1;
+           else{
+               if(s1.dist < s2.dist) return s1;
+               else return s2;
+           }
+       }
+       
+       
+       
+       
+       
    }
    public static Solucion mejor(Solucion s1,Solucion s2, Solucion s3){
-       if(s1.dist < s2.dist && s1.dist < s3.dist) return s1;
-       else {
-          if(s2.dist < s3.dist) return s2;
-          else return s3;  
-       }
-          
+       
+       return mejor(mejor(s1,s2),mejor(s2,s3));
    }
 }
