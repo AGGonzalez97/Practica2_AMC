@@ -98,6 +98,7 @@ public class Algoritmos {
                 min1 =DyV( c1);
                 min2 =DyV( c2);
                 //coger con todos los puntos un area intermedia y hacer fuerza bruta entre esos puntos y quedarse con el menor distancia
+                /*
                 ArrayList<Punto> medio= new ArrayList<Punto>();
                 
                 for (int i = 0; i < l; i++) {
@@ -123,6 +124,64 @@ public class Algoritmos {
                         }
                     }
                 }
+                
+                */
+                
+                
+                ArrayList<Punto> medioD= new ArrayList<Punto>();
+                ArrayList<Punto> medioI= new ArrayList<Punto>();
+                for (int i = 0; i < l; i++) {
+                    if( t.get(i).x < (mitad + mejor(min1,min2).dist) && t.get(i).x >= mitad){
+                        medioD.add(t.get(i));
+                        
+                    }
+                    if( t.get(i).x >= (mitad - mejor(min1,min2).dist) && t.get(i).x < mitad){
+                        medioI.add(t.get(i));
+                        
+                    }
+                }
+                int mI = medioI.size();
+                int mD = medioD.size();
+                Solucion min3 =new Solucion();
+                min3.dist = distancia(medioI.get(0), medioI.get(1), medioD.get(0));
+                for (int i = 0; i < mI; i++) {
+                    for (int n = 0; n < mI; n++) {
+                        for (int o = 0; o < mD; o++) {
+                            if(!(medioI.get(i).equals(medioI.get(n)))) {
+                                if(distancia(medioI.get(i), medioI.get(n), medioD.get(o)) < min3.dist){
+                                    min3.p[0]=medioI.get(i);
+                                    min3.p[1]= medioI.get(n);   
+                                    min3.p[2]= medioD.get(o);
+                                    min3.dist = distancia(medioI.get(i), medioI.get(n), medioD.get(o));
+                                }
+                            }
+                        }
+                    }
+                }
+                for (int i = 0; i < mD; i++) {
+                    for (int n = 0; n < mD; n++) {
+                        for (int o = 0; o < mI; o++) {
+                            if(!(medioD.get(i).equals(medioD.get(n)))) {
+                                if(distancia(medioD.get(i), medioD.get(n), medioI.get(o)) < min3.dist){
+                                    min3.p[0]=medioD.get(i);
+                                    min3.p[1]= medioD.get(n);   
+                                    min3.p[2]= medioI.get(o);
+                                    min3.dist = distancia(medioD.get(i), medioD.get(n), medioI.get(o));
+                                }
+                            }
+                        }
+                    }
+                }
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
                 return mejor(min1,min2,min3);
                 
             }else{
