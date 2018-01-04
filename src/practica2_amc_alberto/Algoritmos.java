@@ -130,12 +130,14 @@ public class Algoritmos {
                 
                 ArrayList<Punto> medioD= new ArrayList<Punto>();
                 ArrayList<Punto> medioI= new ArrayList<Punto>();
+                double dmin = mejor(min1,min2).dist;
+                if(mejor(min1,min2).dist == -1) dmin = mitad;//PARA SOLUCIONAR EL 8 44 2222
                 for (int i = 0; i < l; i++) {
-                    if( t.get(i).x < (mitad + mejor(min1,min2).dist) && t.get(i).x >= mitad){
+                    if( t.get(i).x < (mitad + dmin) && t.get(i).x >= mitad){
                         medioD.add(t.get(i));
                         
                     }
-                    if( t.get(i).x >= (mitad - mejor(min1,min2).dist) && t.get(i).x < mitad){
+                    if( t.get(i).x >= (mitad - dmin) && t.get(i).x < mitad){
                         medioI.add(t.get(i));
                         
                     }
