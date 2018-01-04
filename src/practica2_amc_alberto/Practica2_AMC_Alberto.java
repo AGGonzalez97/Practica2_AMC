@@ -5,7 +5,9 @@
  */
 package practica2_amc_alberto;
 
+
 import java.util.ArrayList;
+import java.util.Random;
 
 /**
  *
@@ -20,28 +22,21 @@ public class Practica2_AMC_Alberto {
     public static void main(String[] args) {
         
         System.out.println("empezando main");
+        Punto []tabla=new Punto[200];
         
+        Random rn=new Random(100);
         
-        Punto a= new Punto((double)1,(double)2);
-        Punto b= new Punto((double)7,(double)2);
-        Punto c= new Punto((double)8,(double)16);
-        Punto d= new Punto((double)9,(double)2);
-        Punto e= new Punto((double)15,(double)2);
-        
-        Punto[] tabla= {a,b,c,d,e};
-        
-        
-        
-        for(int i=0; i<5; i++){
-            System.out.println(tabla[i].x);
+        for(int i=0;i<200;i++)
+        {
+            tabla[i]= new Punto(rn.nextDouble(),rn.nextDouble());
         }
         
-        /*
+        
         Mergesort mer= new Mergesort();
         mer.sort(tabla);
-        */
         
-        Algoritmos al=new Algoritmos(tabla,5);
+        
+        Algoritmos al=new Algoritmos(tabla,200);
         al.SolucionRapida();
         
         System.out.println(al.s.dist);
