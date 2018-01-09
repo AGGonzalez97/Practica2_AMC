@@ -26,6 +26,11 @@ public class Algoritmos {
         
         s = new Solucion();
     }
+    Algoritmos(ArrayList<Punto> a){
+        p = a;
+        s = new Solucion();
+        
+    }
     void SolucionLenta(){
         
         double cercania=distancia(p.get(0), p.get(1), p.get(2));
