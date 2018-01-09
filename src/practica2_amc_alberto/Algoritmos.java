@@ -71,7 +71,7 @@ public class Algoritmos {
                 ArrayList<Punto> c1= new ArrayList<Punto>();
                 ArrayList<Punto> c2= new ArrayList<Punto>();
                 double mitad = (t.get(l-1).x - t.get(0).x )/2 + t.get(0).x;
-                System.out.println("la mitad es"+ mitad);
+                
                 for (int i = 0; i < l; i++) {
                     if(t.get(i).x < mitad){
                         c1.add(t.get(i));
@@ -83,7 +83,35 @@ public class Algoritmos {
                     }
                     
                 }
+                //System.out.println("la mitad es "+ mitad+" y hay "+c1.size()+" puntos en c1 y en c2 "+c2.size());
                 
+                    if(c2.size()==t.size()){
+                        Solucion sol = new Solucion();
+                        double cercania=distancia(c2.get(0),c2.get(1), c2.get(2));
+                        int tam = c2.size();
+                        for (int i = 0; i < tam; i++) {
+                            for (int j = 0; j < tam; j++) {
+                                for (int k = 0; k < tam; k++) {
+                                    if(i==j || i==k || k==j){}
+                                    else {
+                                        double aux=distancia(c2.get(i), c2.get(j),c2.get(k));
+
+                                    if( aux < cercania){
+                                        cercania=aux;
+                                        sol.dist= aux;
+                                        sol.p[0]=c2.get(i);
+                                        sol.p[1]=c2.get(j);        
+                                        sol.p[2]=c2.get(k);
+                                    }
+                                    }
+                                }
+                            }
+                        }
+                        return sol;
+                    }else{
+                        
+                    
+                    
                 
                 min1 =DyV( c1);
                 min2 =DyV( c2);
@@ -158,7 +186,7 @@ public class Algoritmos {
                 
                 
                 return mejor(min1,min2,min3);
-                
+                    }
             }else{
                 if(t.size()==3){
                     Solucion sol = new Solucion();

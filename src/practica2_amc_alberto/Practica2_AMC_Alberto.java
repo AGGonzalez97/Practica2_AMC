@@ -82,7 +82,7 @@ public class Practica2_AMC_Alberto {
         System.out.println("empezando main");
 
         ArrayList<Punto> t= new ArrayList<Punto>();
-        t=leerArchivo("d493.tsp",130);
+        t=leerArchivo("d493.tsp",493);
         
         Algoritmos al=new Algoritmos(t);
         al.SolucionRapida();
