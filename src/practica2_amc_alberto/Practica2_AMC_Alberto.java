@@ -1,71 +1,11 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- 
-package practica2_amc_alberto;
 
-
-import java.util.ArrayList;
-import java.util.Random;
-
-/**
- *
- * @author usuario
- 
-public class Practica2_AMC_Alberto {
-
-    /**
-     * @param args the command line arguments
-     
-
-    public static void main(String[] args) {
-        
-        System.out.println("empezando main");
-        Punto []tabla=new Punto[200];
-        
-        Random rn=new Random(100);
-        
-        for(int i=0;i<200;i++)
-        {
-            tabla[i]= new Punto(rn.nextDouble(),rn.nextDouble());
-        }
-        
-        
-        Mergesort mer= new Mergesort();
-        mer.sort(tabla);
-        
-        
-        Algoritmos al=new Algoritmos(tabla,200);
-        al.SolucionRapida();
-        
-        System.out.println(al.s.dist);
-        
-        /*for(int i=0; i<5; i++){
-            System.out.println(tabla[i].x);
-        }
-        
-        
-     
-    }
-    }
-
-//Nueva modificacion
-*/
-
-
-
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package practica2_amc_alberto;
 
 import java.io.BufferedReader;
 import java.io.FileReader;
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.Scanner;
 
 /**
  *
@@ -79,24 +19,54 @@ public class Practica2_AMC_Alberto {
 
     public static void main(String[] args) throws NumberFormatException, IOException {
         
-        System.out.println("empezando main");
+       ArrayList<Punto> t= new ArrayList<Punto>();
+           t=null;
+           Scanner sc = new Scanner(System.in);
+           String fichero;
+           int tamaño;
 
-        ArrayList<Punto> t= new ArrayList<Punto>();
-        t=leerArchivo("d493.tsp",493);
-        
-        Algoritmos al=new Algoritmos(t);
-        al.SolucionRapida();
-        
-        System.out.println("solucion rapida: "+al.s.dist);
-        al.SolucionLenta();
-        
-        System.out.println("solucion lenta: "+al.s.dist);
-       
-        
-        
-     
+         try {
+            System.out.println("Inserte nombre del archivo TSP a estudiar: ");
+            fichero = sc.nextLine();
+            System.out.println("Inserte tamaño del archivo TSP a estudiar: ");
+            tamaño = sc.nextInt();
+            t=leerArchivo(fichero+".tsp",tamaño);//NOMBRE ARCHIVO + NUMERO DE PUNTOS(TAMAÑO)
+             } catch (Exception e) {System.out.println("Fallo al leer fichero");}
+         
+         
+         if(t!=null){
+               for (int i = 0; i < 15; i++) {//LIMPIAR PANTALLA
+               System.out.println(); 
+            }
+            System.out.println("Menú");
+            System.out.println("----------------");
+            System.out.println("1. Solución Rápia");
+            System.out.println("2. Solución Lenta");
+            System.out.println();
+            System.out.print("¿Qué quieres hacer?:  ");
+            Scanner sc2 = new Scanner(System.in);
+            String opcion = sc2.nextLine();
+            switch (opcion) {
+                case "1":{   
+                    System.out.println("\n\n\n");
+                    Algoritmos al=new Algoritmos(t);
+                    al.SolucionRapida();
+                    System.out.println("Solución Lenta: "+al.s.dist);
+ 
+                    break;
+                
+                }
+                case "2":   {
+                    System.out.println("\n\n\n");
+                    Algoritmos al=new Algoritmos(t);
+                    al.SolucionLenta();
+                    System.out.println("Solución Lenta: "+al.s.dist);
+ 
+                    break;
+                }
+            }
+        }
     }
-    
     
     
     public static ArrayList<Punto> leerArchivo(String ruta, int tam)
@@ -126,11 +96,4 @@ public class Practica2_AMC_Alberto {
 		br.close();
 		return v;
 	}
-    
-    
-    
-    
-    
-    }
-
-//Nueva modificacion
+}

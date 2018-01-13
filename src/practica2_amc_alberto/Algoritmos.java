@@ -32,7 +32,7 @@ public class Algoritmos {
         
     }
     void SolucionLenta(){
-        
+        double tiempoI= System.currentTimeMillis();
         double cercania=distancia(p.get(0), p.get(1), p.get(2));
         int l = p.size();
             for (int i = 0; i < l; i++) {
@@ -53,18 +53,19 @@ public class Algoritmos {
                     }
                 }
             }
-            
+        double tiempoF= System.currentTimeMillis();   
+        System.out.println("Tiempo de ejecución: "+(tiempoF-tiempoI)+" milisegundos");
     }
     void SolucionRapida(){
+        double tiempoI= System.currentTimeMillis(); 
         ArrayList<Punto> x = p;
         s =DyV(x);
+        double tiempoF= System.currentTimeMillis();   
+        System.out.println("Tiempo de ejecución: "+(tiempoF-tiempoI)+" milisegundos");
     }
  
     Solucion DyV(ArrayList<Punto> t){
-            
-            
-                
-           
+ 
             if(t.size() > 3){
                 Solucion min1,min2;
                 int l = t.size();
@@ -83,9 +84,8 @@ public class Algoritmos {
                     }
                     
                 }
-                //System.out.println("la mitad es "+ mitad+" y hay "+c1.size()+" puntos en c1 y en c2 "+c2.size());
                 
-                    if(c2.size()==t.size()){
+                    if(c2.size()==t.size()){//PARA 4 O MAS PUNTOS EN VERTICAL
                         Solucion sol = new Solucion();
                         double cercania=distancia(c2.get(0),c2.get(1), c2.get(2));
                         int tam = c2.size();
@@ -109,15 +109,11 @@ public class Algoritmos {
                         }
                         return sol;
                     }else{
-                        
-                    
-                    
-                
+         
                 min1 =DyV( c1);
                 min2 =DyV( c2);
                
-                
-                
+   
                 ArrayList<Punto> medioD= new ArrayList<Punto>();
                 ArrayList<Punto> medioI= new ArrayList<Punto>();
                 double dmin = mejor(min1,min2).dist;
@@ -170,21 +166,8 @@ public class Algoritmos {
                                 }
                             }
                         }
-                    }
-                    
-                    
-
-
-
-                
-                }
-                
-                
-                
-                
-                
-                
-                
+                    }             
+                }    
                 return mejor(min1,min2,min3);
                     }
             }else{
